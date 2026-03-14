@@ -2,15 +2,19 @@
   "manifest_version": 3,
   "name": "Aether-Link Mesh",
   "version": "1.0",
-  "permissions": ["activeTab", "scripting", "storage"],
-  "host_permissions": ["http://192.168.137.126:8000/*"],
+  "permissions": ["activeTab", "scripting", "storage", "tabs"],
+  "host_permissions": [
+    "http://192.168.137.126:8000/*",
+    "*://*/*"
+  ],
   "action": {
     "default_popup": "popup.html"
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["peerjs.min.js", "content.js"]
+      "js": ["peerjs.min.js", "content.js"],
+      "run_at": "document_end"
     }
   ]
 }
